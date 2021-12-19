@@ -6,11 +6,14 @@
  @ main.py
     * MITM/main.py
 """
+from src.package import cui
 
 """ @ main function
 """
 
 def main():
+    main_cui_engine = cui.Cui()
+    main_cui_engine.cui_engine()
     return
 
 """ @ call main

@@ -13,4 +13,13 @@ class Cui:
     def __init__(self):
         return
 
-    def cui_egine(self):
+    def cui_engine(self):
+        while True:
+            cui_main_command = self.get_command("main")
+
+        return
+
+    def get_command(self, _layer_name):
+        result = ""
+        result = input(_layer_name + "@mindarrow:~# ")
+        return result
