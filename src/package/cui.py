@@ -6,6 +6,7 @@
  @ cui.py
     * MITM/src/package/cui.py
 """
+from src.package import mind
 
 """ @ Cui class
 """
@@ -15,7 +16,9 @@ class Cui:
 
     def cui_engine(self):
         while True:
+            self.run_arp_spoofing()
             cui_main_command = self.get_command("main")
+
 
         return
 
@@ -23,3 +26,9 @@ class Cui:
         result = ""
         result = input(_layer_name + "@mindarrow:~# ")
         return result
+
+    def run_arp_spoofing(self):
+        mind_arp_spoofing_instance = mind.Mind()
+        mind_arp_spoofing_instance.mind_engine()
+
+        return
