@@ -13,18 +13,20 @@ from scapy.sendrecv import sr1
 
 def arp_spoofing(_target_ip_address):
     target_ip_address = _target_ip_address
+    print("target_ip_address = " + target_ip_address)
+    target_mac_address = get_ip_mac_address(target_ip_address)
+    print("target_mac_address = " + target_mac_address)
     local_area_network_gateway_ip_address = get_local_area_network_gateway_ip_address()
+    print("local_area_network_gateway_ip_address = " + local_area_network_gateway_ip_address)
     local_area_network_gateway_mac_address = get_ip_mac_address(local_area_network_gateway_ip_address)
-
-
-
-
+    print("local_area_network_gateway_mac_address = " + local_area_network_gateway_mac_address)
     return
 
 
 def get_local_area_network_gateway_ip_address():
-
-    return
+    get_local_area_network_gateway_information_packet = sr1(IP(dst = "8.8.8.8", ttl = 0) / ICMP(), verbose = 0)
+    local_area_network_gateway_ip_address = get_local_area_network_gateway_information_packet.src
+    return local_area_network_gateway_ip_address
 
 def get_local_area_network_information(self):
     get_gateway_information_packet = sr1(IP(dst = "8.8.8.8", ttl = 0) / ICMP(), verbose = 0)
@@ -46,3 +48,5 @@ def get_ip_mac_address(_ip_address):
 def get_my_mac_address(self):
 
     return
+
+
